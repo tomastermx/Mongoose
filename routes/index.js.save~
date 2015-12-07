@@ -1,0 +1,11 @@
+var express = require('express');
+var router 
+
+
+/* GET home page. */
+exports.index= function(req, res) {
+  res.render('index', { title: 'Express' });
+};
+
+
+
