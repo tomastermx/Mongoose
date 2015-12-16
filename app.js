@@ -9,7 +9,7 @@ var mongoose =require('mongoose');
 var db = require('./model/db');
 var routes = require('./routes');
 var user = require('./routes/users');
-
+var project = require('./routes/project');
 var app = express();
 
 
@@ -33,12 +33,21 @@ app.use(session({
 }))
 
 app.use('/', routes);
+//USER ROUTES
 app.get('/users', user.index);
 app.get('/users/new', user.Create);
 app.post('/users/new', user.doCreate);
+//app.get('/user/edit',user.edit );
+//app.post('/user/edit',user.doEdit);
+//app.get('/user/delete',user.confirmDelete);
+//app.post('/user/delete',user.doDelete);
 
+//app.get('/login',user.login);
 
+//PROJECT ROUTES
 
+//app.get('/project/new',project.create);
+//app.post('project/new', project.doCreate);
 
 
 

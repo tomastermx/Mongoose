@@ -1,10 +1,9 @@
-var express = require('express');
-var router = express.Router();
+
 var mongoose = require('mongoose');
 
 
 
-module.exports = router;
+
 
 
 var projectSchema = new mongoose.Schema({
@@ -20,5 +19,5 @@ tasks:String
 
 });
 
-mongoose.model('Project',projectSchema);
+var Project =  mongoose.model('Project',projectSchema);
 

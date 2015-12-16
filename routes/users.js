@@ -38,10 +38,6 @@ res.redirect('/login');
 
 
 
-
-
-
-
 //Post new user
 
 exports.Create = function(req,res){
