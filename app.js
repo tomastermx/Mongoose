@@ -42,8 +42,8 @@ app.post('/users/new', user.doCreate);
 //app.get('/user/delete',user.confirmDelete);
 //app.post('/user/delete',user.doDelete);
 
-//app.get('/login',user.login);
-
+app.get('/login', user.login);
+app.post('/login', user.doLogin);
 //PROJECT ROUTES
 
 //app.get('/project/new',project.create);

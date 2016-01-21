@@ -50,6 +50,15 @@ buttonText: "Join"
 };
 
 
+//Get Login Page
+exports.login = function (req,res){
+
+res.render('login-form',{title:'Log in'})
+}
+
+
+
+
 
 // POST new user creation form
 exports.doCreate = function(req, res){
@@ -76,6 +85,32 @@ res.redirect('/users');
 
 };
 
+//////////////////////////////////7//Post
+
+exports.doLogin = function(req,res){
+if(req.body.Email) {
+User.findOne({'email':req.body.Email },function(err,user){ if(!err){if(!user){
+res.redirect('/');
+}
+
+else
+{
+
+req.session.user = {
+"name":user.name,
+"email":user.email,
+"_id":user._id
+};
+
+req.session.loggedin= "true"
+console.log('Logged in user'+user);
+res.redirect('/user');
 
 
 
+}
+
+}
+   } )
+}
+};
