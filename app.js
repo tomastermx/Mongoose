@@ -22,6 +22,7 @@ app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -33,17 +34,25 @@ app.use(session({
 }))
 
 app.use('/', routes);
+
 //USER ROUTES
 app.get('/users', user.index);
 app.get('/users/new', user.Create);
 app.post('/users/new', user.doCreate);
+
+
+app.get('/login',  user.login);
+app.post('/login',user.doLogin);
+
+
 //app.get('/user/edit',user.edit );
 //app.post('/user/edit',user.doEdit);
 //app.get('/user/delete',user.confirmDelete);
 //app.post('/user/delete',user.doDelete);
 
-app.get('/login', user.login);
-app.post('/login', user.doLogin);
+
+
+
 //PROJECT ROUTES
 
 //app.get('/project/new',project.create);

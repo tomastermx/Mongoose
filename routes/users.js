@@ -1,9 +1,6 @@
 var mongoose = require( 'mongoose' );
 
 
-
-
-
 var userSchema = new mongoose.Schema({
 name: String,
 email: {type: String, unique:true},
@@ -50,13 +47,6 @@ buttonText: "Join"
 };
 
 
-//Get Login Page
-exports.login = function (req,res){
-
-res.render('login-form',{title:'Log in'})
-}
-
-
 
 
 
@@ -85,32 +75,26 @@ res.redirect('/users');
 
 };
 
-//////////////////////////////////7//Post
+//Get Login Page
+exports.login = function (req,res){
 
-exports.doLogin = function(req,res){
-if(req.body.Email) {
-User.findOne({'email':req.body.Email },function(err,user){ if(!err){if(!user){
+res.render('login-form',{title:'Log in'})
+}
+
+
+
+
+
+
+
+exports.doLogin = function (req,res){
+
+if(req.body.Email){
+res.send('bien!');
+} else{
 res.redirect('/');
 }
 
-else
-{
-
-req.session.user = {
-"name":user.name,
-"email":user.email,
-"_id":user._id
-};
-
-req.session.loggedin= "true"
-console.log('Logged in user'+user);
-res.redirect('/user');
-
-
 
 }
 
-}
-   } )
-}
-};
