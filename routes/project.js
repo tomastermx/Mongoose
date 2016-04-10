@@ -1,23 +1,24 @@
 
 var mongoose = require('mongoose');
+var Project = mongoose.model('Project');
 
 
 
 
+exports.create = function(req,res){
+res.render('project-form.jade',{
+userID:req.session.user._id,
+name: req.session.user.name
 
+})
 
-var projectSchema = new mongoose.Schema({
-
-projectName: String,
-createdOn:{type:Date, default:Date.now},
-modifiedOn: Date,
-createdBy: String,
-contributors:String,
-tasks:String
+}
 
 
 
-});
+exports.doCreate = function(req,res){
 
-var Project =  mongoose.model('Project',projectSchema);
+res.redirect('/');
+console.log(req.body.task);
 
+}

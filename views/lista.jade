@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1   Lista de  Usuarios
+
+   h2 Usuarios inscritos
+
+  ul
+   each val in user
+    li=val.email
+    ul

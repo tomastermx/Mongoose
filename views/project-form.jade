@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1 New Project
+  p  Crea tu projecto  #{name}
+  p  #{userID}
+
+
+  form(id="frmproject", method="post", action="")
+    label(for="ProjectName") Projectname
+    input(type="text", name="Projectname", id="Projectname")
+    label(for="task") Task
+    input(type="text", name="task", id="task")
+    input(type="submit", value="submit")
+

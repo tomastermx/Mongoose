@@ -10,6 +10,7 @@ var db = require('./model/db');
 var routes = require('./routes');
 var user = require('./routes/users');
 var project = require('./routes/project');
+var lista = require('./routes/users');
 var app = express();
 
 
@@ -53,13 +54,13 @@ app.post('/login',user.doLogin);
 
 
 
-//PROJECT ROUTES
+//PROJECT ROUTE
 
-//app.get('/project/new',project.create);
-//app.post('project/new', project.doCreate);
+app.get('/project/new', project.create);
+app.post('/project/new', project.doCreate);
 
 
-
+app.get('/users/all',user.lista);
 
 
 // catch 404 and forward to error handler

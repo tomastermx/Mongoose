@@ -22,7 +22,7 @@ res.render('user-page',{
 title: req.session.user.name,
 name: req.session.user.name,
 email: req.session.user.email,
-
+userID:req.session.user._id
 })
 
 }else{
@@ -87,14 +87,60 @@ res.render('login-form',{title:'Log in'})
 
 
 
-exports.doLogin = function (req,res){
+exports.doLogin = function (req,res) {
 
 if(req.body.Email){
-res.send('bien!');
-} else{
+
+User.findOne({'email':req.body.Email},
+function(err,user){
+if(user){
+
+req.session.user = {
+
+"name" :user.name,
+"email":user.email,
+"_id": user._id
+
+};
+
+req.session.loggedIn =true;
+res.redirect('/users');
+
+
+console.log(user);
+
+   }
+
+else {
 res.redirect('/');
 }
 
-
 }
 
+       )
+
+    }
+    else {
+
+      res.redirect('/');
+    }
+ }
+
+
+
+exports.lista =function (req,res) {
+User.find({},function(err,user){
+	if(user){
+
+    console.log(user);
+		res.render('lista',{user:user});
+
+		}
+
+	}
+
+
+)
+
+
+}
