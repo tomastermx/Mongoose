@@ -1,5 +1,5 @@
 var mongoose = require( 'mongoose' );
-
+var Project = mongoose.model('Project');
 
 var userSchema = new mongoose.Schema({
 name: String,
@@ -18,12 +18,33 @@ var User = mongoose.model( 'User',userSchema );
 exports.index = function(req,res){
 if(req.session.loggedIn === true ){
 
-res.render('user-page',{
-title: req.session.user.name,
-name: req.session.user.name,
-email: req.session.user.email,
-userID:req.session.user._id
-})
+
+Project.find({'userid':req.session.user._id},function(err,project){
+
+if(project){
+
+  console.log(project);
+
+
+
+  res.render('user-page',{
+  title: req.session.user.name,
+  name: req.session.user.name,
+  email: req.session.user.email,
+  userID:req.session.user._id,
+  project: project
+
+  })
+
+
+
+
+}
+});
+
+
+
+
 
 }else{
 
@@ -107,7 +128,12 @@ req.session.loggedIn =true;
 res.redirect('/users');
 
 
+
 console.log(user);
+
+
+
+
 
    }
 

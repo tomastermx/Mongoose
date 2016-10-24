@@ -6,17 +6,20 @@ h1 Mongoose Project Management
 h2=name
 
 p Email:  #{email}
-
+p User Id: #{userID}
    h3 Actions
    ul
     li
       a(href="/project/new") Create project
-    li 
+    li
       a(href="/user/edit") Edit user info
-    li 
+    li
       a(href="/user/delete")  Delete #{name}
-    li 
+    li
       a(href="/logout") Logout#{name}
 
- 
 
+    ul
+     each val in project
+        li=val.projectName
+        ul

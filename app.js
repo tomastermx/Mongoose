@@ -11,6 +11,7 @@ var routes = require('./routes');
 var user = require('./routes/users');
 var project = require('./routes/project');
 var lista = require('./routes/users');
+
 var app = express();
 
 
@@ -32,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
   secret: 'keyboard cat',
-}))
+}));
 
 app.use('/', routes);
 
@@ -58,9 +59,12 @@ app.post('/login',user.doLogin);
 
 app.get('/project/new', project.create);
 app.post('/project/new', project.doCreate);
+app.get('/project/:id', project.displayInfo);
+
+app.get('/users/all', user.lista);
+app.get('/project/all', project.list);
 
 
-app.get('/users/all',user.lista);
 
 
 // catch 404 and forward to error handler

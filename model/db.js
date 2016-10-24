@@ -18,5 +18,23 @@ console.log('Mongoose connected to '+dbURI);
 
 
 
+/*****************************************************
+
+PROJECT SCHEMA
+
+**********************************************************/
+
+var projectSchema = new mongoose.Schema({
+projectName:String,
+createdOn:{type:Date,default:Date.now},
+modifiedOn:Date,
+contributors:String,
+tasks:String,
+createdby:String,
+userid:String
 
 
+
+});
+
+mongoose.model('Project',projectSchema);
