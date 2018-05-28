@@ -32,7 +32,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-  secret: 'keyboard cat',
+  secret: 'keyboard dog',
 }));
 
 app.use('/', routes);
@@ -41,11 +41,12 @@ app.use('/', routes);
 app.get('/users', user.index);
 app.get('/users/new', user.Create);
 app.post('/users/new', user.doCreate);
-
+app.get('/users/logout',user.logout);
 
 app.get('/login',  user.login);
-app.post('/login',user.doLogin);
+app.post('/login', user.doLogin);
 
+app.get('/users/all/json',user.json);
 
 //app.get('/user/edit',user.edit );
 //app.post('/user/edit',user.doEdit);
@@ -60,6 +61,9 @@ app.post('/login',user.doLogin);
 app.get('/project/new', project.create);
 app.post('/project/new', project.doCreate);
 app.get('/project/:id', project.displayInfo);
+
+app.get('/project/delete/:id', project.doDelete);
+app.post('/project/delete/:id', project.confirmDelete)
 
 app.get('/users/all', user.lista);
 app.get('/project/all', project.list);

@@ -18,6 +18,21 @@ console.log('Mongoose connected to '+dbURI);
 
 
 
+
+
+/************************ 
+ * 
+ *  USER SCHEMA
+ * 
+ * 
+ * 
+ * 
+*/
+
+
+
+
+
 /*****************************************************
 
 PROJECT SCHEMA

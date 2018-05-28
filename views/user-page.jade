@@ -1,12 +1,16 @@
 
 
-h1 Mongoose Project Management
+extends layout
+
+block content
+
+ h1 Mongoose Project Management
 
 
-h2=name
+ h2=name
 
-p Email:  #{email}
-p User Id: #{userID}
+ p Email:  #{email}
+ p User Id: #{userID}
    h3 Actions
    ul
     li
@@ -16,10 +20,14 @@ p User Id: #{userID}
     li
       a(href="/user/delete")  Delete #{name}
     li
-      a(href="/logout") Logout#{name}
+      a(href="/users/logout")  Logout #{name}
 
 
-    ul
+  
      each val in project
-        li=val.projectName
-        ul
+     ul  
+
+       li #{val.projectName}
+        a(href="/project/#{val.id}") Display
+      
+    

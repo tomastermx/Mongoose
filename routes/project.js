@@ -37,20 +37,11 @@ userid: req.session.user._id
 
             }
 
-
    }
 
 
 
-
-
-
-
     );
-
-
-
-
 
 //console.log(req.body.task);
 //console.log(req.body.Projectname);
@@ -84,6 +75,33 @@ res.render('project',{project:project});
 };
 
 
+
+
+exports.doDelete =function(req, res){
+
+
+  console.log("ya se activo");
+
+  
+ }
+
+
+
+exports.confirmDelete = function(req,res){
+
+  if(req.params.id){
+Project.findByIdAndRemove({'_id':req.params.id }),function(err,project){
+
+  if(err){
+    console.log("algo haces mal");
+  }
+}
+
+
+
+}
+
+}
 
 
 

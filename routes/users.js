@@ -154,19 +154,40 @@ res.redirect('/');
 
 
 
+exports.logout =function(req,res){
+
+req.session.loggedIn = false;
+res.redirect('/');
+
+}
+
+
+
+
+
 exports.lista =function (req,res) {
 User.find({},function(err,user){
-	if(user){
+  if(user){
 
     console.log(user);
-		res.render('lista',{user:user});
+    res.render('lista',{user:user});
 
-		}
+    }
 
-	}
+  }
 
 
 )
 
 
+}
+
+exports.json =function (req,res){
+  User.find({},function(err,user){
+ 
+     if(user){
+      res.json(user);
+    }
+
+  })
 }
