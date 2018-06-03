@@ -3,3 +3,12 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  
+     div(ng-controller="MeanCtrl")
+         ul(ng-repeat="user in users")
+             li{{user.name}}
+      
+      div(ng-controller="MeanModel")
+           ul(ng-repeat="perro in model")
+               li {{perro.name}}
+      

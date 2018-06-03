@@ -14,9 +14,14 @@ var lista = require('./routes/users');
 
 var app = express();
 
+/*
 
+Ejemplo que se puede utilizar
+https://scotch.io/tutorials/creating-a-single-page-todo-app-with-node-and-angular
 
+git clone git@github.com:scotch-io/node-todo
 
+*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,9 +32,27 @@ app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+/// Habilita cors   para poder hacer una JSON API
+
+
+/*
+https://jonathanmh.com/how-to-enable-cors-in-express-js-node-js/
+
+*/
+
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
+
 
 app.use(session({
   secret: 'keyboard dog',
@@ -46,12 +69,13 @@ app.get('/users/logout',user.logout);
 app.get('/login',  user.login);
 app.post('/login', user.doLogin);
 
-app.get('/users/all/json',user.json);
+app.get('/users/all/json', user.json);
 
 //app.get('/user/edit',user.edit );
 //app.post('/user/edit',user.doEdit);
 //app.get('/user/delete',user.confirmDelete);
 //app.post('/user/delete',user.doDelete);
+
 
 
 
